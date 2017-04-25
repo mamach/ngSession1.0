@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Root Component</h3>
+      <app-doctors-list></app-doctors-list>
+    </div>
+
+    <hr>
+
+    <div class="col-xs-7">
+      <h3>Event Databinding and String Interpolation</h3>
+      <strong>doctor details</strong>
+      <p>name: mahesh</p>
+      <p>specialization: skin</p>
+      <div class="col-xs-6"><button (click)="submitDocData()" class="btn btn-success">Submit Data</button></div>
+      <div class="col-xs-6"><button type="button" name="button" class="btn btn-success" (click)="clearLogs()" [disabled]="logs.length > 0 ? false: true"> Clear logs</button></div>
+    </div>
+    <div class="col-xs-5">
+      doctor image
+      <img *ngIf="showImage" src="https://www.coralcalcium.com/assets/i/doctor2.png" width={{imageWidth}} alt=""> <br>
+      <button (click)="toggleImage()" class="btn btn-success">Toggle Image</button>
+    </div>
+    <div class="col-xs-12">
+      <h3>logs</h3>
+      <ul>
+        <li *ngFor="let log of logs; let indx = index" [ngStyle]="{backgroundColor: indx%2 ===0 ? 'blue': 'transparent'}">{{log}}</li>
+      </ul>
+    </div>
+
+    <hr>
+    <h3>2Way data binding and Property Databinding</h3>
+    <input class="form-control" [(ngModel)]="username" (input)="submitName($event)" type="text" name="" value="">
+    <button class="btn btn-success" [disabled]="!activateButton">Submit Name</button>
+    <br> {{username}}
+    <hr>
+  </div>
+</div>
